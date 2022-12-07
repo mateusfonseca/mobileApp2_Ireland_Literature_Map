@@ -85,7 +85,7 @@ export default class DetailsScreen extends Screen {
           {photoRef ? (<Image
             style={detailsStyles.image}
             source={{
-              uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoRef}&key=${Config.GOOGLE_MAPS_API_KEY}`,
+              uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=500&photo_reference=${photoRef}&key=${Config.GOOGLE_MAPS_API_KEY}`,
             }}
           />) : (<Text style={[appStyles.text, { marginVertical: 50 }]}>
             No picture found for this location!
