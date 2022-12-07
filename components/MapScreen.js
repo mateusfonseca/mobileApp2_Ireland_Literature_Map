@@ -379,7 +379,7 @@ export default class MapScreen extends Screen {
           <Button
             color={"#4287f5"}
             title={"Remove Marker"}
-            onPress={_ => this.setState({ newMarker: null })}
+            onPress={() => this.setState({ newMarker: null })}
           />
         </View>
       </View>) : null}
