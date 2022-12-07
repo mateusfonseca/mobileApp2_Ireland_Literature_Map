@@ -242,9 +242,12 @@ export default class MapScreen extends Screen {
             {/* Displays callout bubble when marker is tapped */}
             <Callout
               // Navigates to DetailsScreen on tapping the callout
-              onPress={() => this.props.navigation.navigate("Details", {
-                place,
-              })}>
+              onPress={() => {
+                let typeName = placeTypes.find(type => type.id === place.place_type_id).name;
+                this.props.navigation.navigate("Details", {
+                  place, typeName,
+                });
+              }}>
               <Text style={appStyles.text}>{place.name}</Text>
             </Callout>
           </Marker>);

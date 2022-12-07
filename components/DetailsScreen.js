@@ -34,9 +34,12 @@ export default class DetailsScreen extends Screen {
     super(props);
     console.log("DetailsScreen.js here!");
 
+    // Parameters received from MapScreen
+    const params = this.props.route.params;
+
     // Class' state properties to keep track of runtime changes that need to be re-rendered
     this.state = {
-      place: this.props.route.params.place, photoRef: null, contrib: null, contributor: null, isLoading: true,
+      place: params.place, typeName: params.typeName, photoRef: null, contrib: null, contributor: null, isLoading: true,
     };
   }
 
@@ -73,7 +76,7 @@ export default class DetailsScreen extends Screen {
 
   // Renders the details view
   render() {
-    const { place, photoRef, contrib, contributor, isLoading } = this.state;
+    const { place, typeName, photoRef, contrib, contributor, isLoading } = this.state;
 
     return (<SafeAreaView style={appStyles.container}>
       <ScrollView style={detailsStyles.scroll}>
@@ -96,29 +99,28 @@ export default class DetailsScreen extends Screen {
         </View>)}
         <View style={detailsStyles.details}>
           <View>
-            <Text
-              style={[detailsStyles.colOdd, detailsStyles.rowOdd, appStyles.text]}>
+            <Text style={[detailsStyles.colOdd, detailsStyles.rowOdd, appStyles.text]}>
               ID:
             </Text>
             <Text style={[detailsStyles.colOdd, appStyles.text]}>
               Location:
             </Text>
-            <Text
-              style={[detailsStyles.colOdd, detailsStyles.rowOdd, appStyles.text]}>
+            <Text style={[detailsStyles.colOdd, detailsStyles.rowOdd, appStyles.text]}>
               Name:
             </Text>
             <Text style={[detailsStyles.colOdd, appStyles.text]}>
               Gaelic Name:
             </Text>
-            <Text
-              style={[detailsStyles.colOdd, detailsStyles.rowOdd, appStyles.text]}>
+            <Text style={[detailsStyles.colOdd, detailsStyles.rowOdd, appStyles.text]}>
               Place Type ID:
             </Text>
             <Text style={[detailsStyles.colOdd, appStyles.text]}>
+              Place Type:
+            </Text>
+            <Text style={[detailsStyles.colOdd, detailsStyles.rowOdd, appStyles.text]}>
               Latitude:
             </Text>
-            <Text
-              style={[detailsStyles.colOdd, detailsStyles.rowOdd, appStyles.text]}>
+            <Text style={[detailsStyles.colOdd, appStyles.text]}>
               Longitude:
             </Text>
           </View>
@@ -134,8 +136,11 @@ export default class DetailsScreen extends Screen {
             <Text style={[detailsStyles.rowOdd, appStyles.text]}>
               {place.place_type_id}
             </Text>
-            <Text style={appStyles.text}>{place.latitude}</Text>
-            <Text style={[detailsStyles.rowOdd, appStyles.text]}>
+            <Text style={appStyles.text}>
+              {typeName}
+            </Text>
+            <Text style={[detailsStyles.rowOdd, appStyles.text]}>{place.latitude}</Text>
+            <Text style={appStyles.text}>
               {place.longitude}
             </Text>
           </View>
