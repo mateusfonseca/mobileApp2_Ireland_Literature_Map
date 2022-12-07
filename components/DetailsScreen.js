@@ -43,7 +43,7 @@ export default class DetailsScreen extends Screen {
     };
   }
 
-  // Fetches json with photo data from Google Places API related to the place being detailed
+  // Fetches json with photo data from Google Maps Places API related to the place being detailed
   async getPhotoRef(place) {
     try {
       const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=photos&input=${place.name}&inputtype=textquery&locationbias=point:${place.latitude},${place.longitude}&key=${Config.GOOGLE_MAPS_API_KEY}`);
